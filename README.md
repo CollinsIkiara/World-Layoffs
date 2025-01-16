@@ -1,4 +1,3 @@
-```markdown
 # World Layoffs Data Analysis
 
 ## Project Overview
