@@ -10,7 +10,7 @@ This project analyzes global layoffs across various industries and companies. Th
 The project will proceed through the following stages:
 
 1. **Data Cleaning** (Completed)
-2. **Exploratory Data Analysis (EDA)** (Upcoming)
+2. **Exploratory Data Analysis (EDA)** (Completed)
 3. **Insights and Recommendations**
 4. **Modeling (Optional)**
 
@@ -64,25 +64,82 @@ The SQL script used for cleaning is stored in `01_Data_Cleaning.sql`.
 ---
 
 ## Exploratory Data Analysis (EDA)
-**Status**: To be completed.
+**Status**: Completed.
 
-The following analyses will be conducted during the EDA phase:
+The following analyses were conducted during the EDA phase:
 
 1. **Univariate Analysis**:
-   - Distribution of layoffs by industry, location, and funding stage.
-   - Trends in layoffs over time.
+   - **Distribution of layoffs by industry, location, and funding stage**:
+     ```sql
+     SELECT industry, SUM(total_laid_off)
+     FROM layoffs_staging2
+     GROUP BY industry
+     ORDER BY 2 DESC;
+     ```
+
+   - **Trends in layoffs over time**:
+     ```sql
+     SELECT YEAR(`date`), SUM(total_laid_off)
+     FROM layoffs_staging2
+     GROUP BY YEAR(`date`)
+     ORDER BY 1 DESC;
+     ```
 
 2. **Bivariate and Multivariate Analysis**:
-   - Correlation between `funds_raised_millions` and `total_laid_off`.
-   - Relationship between `percentage_laid_off` and funding stage.
+   - **Correlation between `funds_raised_millions` and `total_laid_off`**:
+     ```sql
+     SELECT funds_raised_millions, total_laid_off
+     FROM layoffs_staging2;
+     ```
+
+   - **Relationship between `percentage_laid_off` and funding stage**:
+     ```sql
+     SELECT stage, AVG(percentage_laid_off)
+     FROM layoffs_staging2
+     GROUP BY stage
+     ORDER BY 2 DESC;
+     ```
 
 3. **Geographic Analysis**:
-   - Identifying countries or regions most affected by layoffs.
+   - **Identifying countries or regions most affected by layoffs**:
+     ```sql
+     SELECT country, SUM(total_laid_off)
+     FROM layoffs_staging2
+     GROUP BY country
+     ORDER BY 2 DESC;
+     ```
 
 4. **Visualization**:
-   - Interactive plots to show trends and insights (e.g., time series, bar charts, heatmaps).
+   - **Rolling Total of Layoffs Per Month**:
+     ```sql
+     WITH Rolling_Total AS
+     (
+       SELECT SUBSTRING(`date`, 1, 7) AS `MONTH`, SUM(total_laid_off) AS total_off
+       FROM layoffs_staging2
+       WHERE SUBSTRING(`date`, 1, 7) IS NOT NULL
+       GROUP BY `MONTH`
+       ORDER BY 1 ASC
+     )
+     SELECT `MONTH`, total_off, SUM(total_off) OVER (ORDER BY `MONTH`) AS rolling_total
+     FROM Rolling_Total;
+     ```
 
-**Placeholders**: Once the EDA is completed, results and insights will populate this section.
+5. **Additional Insights**:
+   - **Companies with 100% layoffs**:
+     ```sql
+     SELECT *
+     FROM layoffs_staging2
+     WHERE percentage_laid_off = 1
+     ORDER BY funds_raised_millions DESC;
+     ```
+
+   - **Companies with the most total layoffs**:
+     ```sql
+     SELECT company, SUM(total_laid_off)
+     FROM layoffs_staging2
+     GROUP BY company
+     ORDER BY 2 DESC;
+     ```
 
 ---
 
@@ -124,8 +181,9 @@ The following analyses will be conducted during the EDA phase:
 ---
 
 ## Next Steps
-1. Perform exploratory data analysis.
-2. Populate the EDA section with findings and visualizations.
-3. Generate insights and provide actionable recommendations.
-```
+1. Perform insights and recommendations based on EDA findings.
+2. Populate the insights and recommendations section with actionable items.
+3. Generate predictive models (if necessary).
+
+---
 
