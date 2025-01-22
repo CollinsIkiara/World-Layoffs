@@ -141,6 +141,8 @@ The following analyses were conducted during the EDA phase:
      ORDER BY 2 DESC;
      ```
 
+The SQL script used for cleaning is stored in `02_EDA.sql`.
+
 ---
 
 ## Project Workflow
@@ -148,7 +150,7 @@ The following analyses were conducted during the EDA phase:
    - Cleaning SQL script: `01_Data_Cleaning.sql`
 
 2. **Exploratory Data Analysis (EDA)**:
-   - Utilize Python libraries like Pandas, Matplotlib, and Seaborn for analysis and visualization.
+   - EDA SQL script: `02_EDA.sql`.
 
 3. **Insights and Recommendations**:
    - Summarize key findings from EDA.
@@ -166,7 +168,7 @@ The following analyses were conducted during the EDA phase:
    - Ensure the cleaned dataset is ready for EDA.
 
 2. **EDA**:
-   - Use the `layoffs_staging2.csv` file for analysis.
+   - Refer to `02_EDA.sql` for the SQL scripts used.
    - Update the EDA section with visualizations and findings.
 
 3. **Analysis Reports**:
