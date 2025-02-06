@@ -85,10 +85,10 @@ The EDA process included the following:
 
 2. **EDA**:
    - Refer to `02_EDA.sql` and `world_layoffs_eda.ipynb` for exploratory data analysis.
-   - Review the notebook for visualizations and insights.
+   - Review the notebook as well as the `world_layoffs_report.pdf` for visualizations and insights.
 
 3. **Insights and Recommendations**:
-   - Summarized in this README and the Jupyter notebook.
+   - Summarized in this README file, Jupyter Notebook as well as the `world_layoffs_report.pdf` report.
 
 ---
 
