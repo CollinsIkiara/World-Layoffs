@@ -4,7 +4,7 @@
 This project analyzes global layoffs across various industries and companies. The data highlights the impact of layoffs on employees, companies, and industries. The main goals are to:
 
 - Identify trends in layoffs across time, regions, and industries.
-- Quantify the severity of layoffs and understand their correlation with factors such as funding stage and funds raised.
+- Quantify the severity of layoffs and understand their correlation with factors such as funding stage.
 - Provide actionable insights through visualizations and statistical analyses.
 
 ---
@@ -40,29 +40,31 @@ The data cleaning process involved the following steps:
 ## Exploratory Data Analysis (EDA)
 The EDA process included the following:
 
-1. **Univariate Analysis**:
-   - Distribution of layoffs by industry, location, and funding stage.
-   - Trends in layoffs over time.
+1. **Data Loading**:
+  - The `layoffs_staging2.csv` cleaned dataset was used.
+    
+2. **Layoffs By Industry**:
+   - Correlation between `industry` and `total_laid_off`.
+   
+3. **Trends in Layoffs over Time**:
+   - Layoffs By Month.
+   - Layoffs By Year.
 
-2. **Bivariate and Multivariate Analysis**:
-   - Correlation between `funds_raised_millions` and `total_laid_off`.
-   - Relationship between `percentage_laid_off` and `stage`.
+4. **Layoffs By Stage of Funding**:
+   - Correlation between `stage` and `total_laid_off`.
+  
+5. **Countries with the Most Layoffs**
+   - Correlation between `country` and `total_laid_off`.
 
-3. **Geographic Analysis**:
-   - Identifying countries and regions most affected by layoffs.
-
-4. **Time-Series Analysis**:
-   - Rolling total of layoffs per month for trend analysis.
-
-5. **Additional Insights**:
+6. **Additional Insights**:
    - Companies with 100% layoffs were identified.
    - Top companies with the highest total layoffs were listed.
 
 ---
 
 ## Key Insights
-1. **Industries Most Affected**: The Technology, Media, and Retail sectors experienced the highest layoffs, driven by economic downturns and shifts in business models.
-2. **Funding Stages**: Companies in early funding stages (e.g., Series A and B) were more vulnerable to layoffs, likely due to their limited financial runway.
+1. **Industries Most Affected**: The Consumer and Retail sectors experienced the highest layoffs, driven by economic downturns and shifts in business models.
+2. **Funding Stages**: Companies at the Post-IPO stage of funding were more vulnerable to layoffs, showing that companies that go public are most vulnerable to layoffs.
 3. **Geographic Distribution**: The United States and India were the most affected countries in terms of layoffs, reflecting their large startup ecosystems.
 4. **Trends Over Time**: Layoffs peaked during periods of economic uncertainty and decreased as market conditions stabilized.
 
@@ -70,7 +72,7 @@ The EDA process included the following:
 
 ## Recommendations
 1. **Support Vulnerable Sectors**: Focus on providing support and funding to industries most affected by layoffs, especially during economic downturns.
-2. **Monitor Early-Stage Companies**: Create financial safety nets or programs for early-stage companies to reduce vulnerability to sudden market shifts.
+2. **Monitor Company Funding Stages**: Monitor companies at specific funding stages for early signs of mass layoffs. Especially companies at the Post-IPO stage.
 3. **Geographic Focus**: Policymakers should provide region-specific support, especially in countries with high layoff rates.
 4. **Improve Data Collection**: More granular data on employee roles and layoff reasons can enhance predictive models for future workforce planning.
 
